@@ -93,7 +93,7 @@ $dateSlot1->add(new \DateInterval('P1D'));
 $dateSlot1 == $dateSlot2; // true
 ````
 
-### comparring
+### comparing
 
 ````php
 // [2020-01-01, 2020-01-02]
