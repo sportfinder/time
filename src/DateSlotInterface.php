@@ -10,6 +10,10 @@ interface DateSlotInterface extends DateSlotableInterface
 
     public function equals(DateSlotInterface $dateSlot): bool;
 
+    public function intersect(DateSlotableInterface $toIntersect = null);
+
+    public function subtract($dateSlot);
+
     public function getDuration($unit = Units::SECOND): int;
 
     public function hasTimeLeft(): bool;
@@ -17,6 +21,4 @@ interface DateSlotInterface extends DateSlotableInterface
     public function sub(\DateInterval $interval);
 
     public function add(\DateInterval $interval);
-
-
 }

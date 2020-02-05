@@ -3,8 +3,9 @@
 
 namespace SportFinder\Time\DateSlot;
 
-
+use SportFinder\Time\DateSlot;
 use SportFinder\Time\DateSlotableInterface;
+use SportFinder\Time\DateSlotInterface;
 
 trait IntersectTrait
 {
@@ -27,16 +28,16 @@ trait IntersectTrait
      * 3)       ----[B.START]----[A.START]----------[B.END]----[A.END]----->
      * RESULT=  -------------------|------------------|-------------------->
      *
-     * @param DateSlotableInterface $interval
+     * @param DateSlotableInterface $toIntersect
      *
      * @return null|DateSlot
      *
      * @throws \Exception
      */
-    public function intersect(DateSlotableInterface $interval = null)
+    public function intersect(DateSlotableInterface $toIntersect = null): ?DateSlotInterface
     {
         // si il n'y a pas d'intersection, on retourne null
-        if ($this->isIntervalBefore($interval) OR $this->isIntervalAfter($interval)) {
+        if ($this->isBefore($toIntersect) OR $this->isAfter($toIntersect)) {
             return null;
         }
 
@@ -45,25 +46,25 @@ trait IntersectTrait
 
         // si la session à commencer avant l'horaire, la consommation début au début de l'horaire
         // PICK UP THE START OF INTERSECTION ---START---[END]--->
-        if ($interval->getStart() < $this->getStart()) {
+        if ($toIntersect->getStart() < $this->getStart()) {
             // ------INTERVAL----------THIS------
             // ------------------------|---------
             $start = clone $this->getStart();
         } else {
             // ----------THIS------INTERVAL------
             // ------------------------|---------
-            $start = clone $interval->getStart();
+            $start = clone $toIntersect->getStart();
         }
 
         // PICK UP THE END OF INTERSECTION ---[START]---END--->
-        if ($interval->getEnd() > $this->getEnd()) {
+        if ($toIntersect->getEnd() > $this->getEnd()) {
             // ----------THIS------INTERVAL------>
             // ------------|--------------------->
             $end = clone $this->getEnd();
         } else {
             // ------INTERVAL------THIS---------->
             // ----------|----------------------->
-            $end = clone $interval->getEnd();
+            $end = clone $toIntersect->getEnd();
         }
 
         $dateSlot = new DateSlot($start, $end);

@@ -9,18 +9,18 @@ use SportFinder\Time\Util\DateTimeComparator as Util;
 
 trait ComparatorTrait
 {
-    public function isBefore($dateTimeOrDateSlot, $openLeft = false, $openRight = false): bool
+    public function isBefore($dateTimeOrDateSlot, $intervalOpen = false): bool
     {
         return $dateTimeOrDateSlot instanceof \DateTime ?
-            $this->isBeforeDateTime($dateTimeOrDateSlot, $openLeft) :
-            $this->isBeforeDateSlot($dateTimeOrDateSlot);
+            $this->isBeforeDateTime($dateTimeOrDateSlot, $intervalOpen) :
+            $this->isBeforeDateSlot($dateTimeOrDateSlot, $intervalOpen);
     }
 
-    public function isAfter($dateTimeOrDateSlot, $openLeft = false, $openRight = false): bool
+    public function isAfter($dateTimeOrDateSlot, $intervalOpen = false): bool
     {
         return $dateTimeOrDateSlot instanceof \DateTime ?
-            $this->isAfterDateTime($dateTimeOrDateSlot, $openRight) :
-            $this->isAfterDateSlot($dateTimeOrDateSlot);
+            $this->isAfterDateTime($dateTimeOrDateSlot, $intervalOpen) :
+            $this->isAfterDateSlot($dateTimeOrDateSlot, $intervalOpen);
     }
 
     protected function isBeforeDateTime(\DateTime $datetime = null, $intervalOpen = false)
@@ -49,9 +49,9 @@ trait ComparatorTrait
      *
      * @return bool
      */
-    protected function isBeforeDateSlot(DateSlotableInterface $interval)
+    protected function isBeforeDateSlot(DateSlotableInterface $interval, $intervalOpen = false)
     {
-        return $this->isBeforeDateTime($interval->getStart());
+        return $this->isBeforeDateTime($interval->getStart(), $intervalOpen);
     }
 
     /**

@@ -8,6 +8,20 @@ trait SubtractTrait
 {
     public function subtract($dateSlot)
     {
+        if(is_iterable($dateSlot))
+        {
+            $result = [$this];
+            foreach ($dateSlot as $item) {
+
+                $_subResult = [];
+                foreach ($result as $_result) {
+                    $_subResult = array_merge($_subResult, $_result->subtract($item));
+                }
+                $result = $_subResult;
+            }
+            return $result;
+
+        }
         // THIS:    ---|-----|--->
 
         // 0)       ---|-----|--->

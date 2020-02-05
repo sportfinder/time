@@ -13,6 +13,4 @@ interface DateSlotableInterface
     public function getEnd(): ?\DateTime;
 
     public function toDateSlot(): DateSlotInterface;
-
-
 }
