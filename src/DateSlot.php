@@ -3,14 +3,13 @@
 
 namespace SportFinder\Time;
 
-use App\Util\Date\DateSlotableInterface;
 use SportFinder\Time\DateSlot\ComparatorTrait;
 use SportFinder\Time\DateSlot\ContainsTrait;
 use SportFinder\Time\DateSlot\IntersectTrait;
 use SportFinder\Time\DateSlot\OperationTrait;
 use SportFinder\Time\DateSlot\SubtractTrait;
 
-class DateSlot implements DateSlotInterface, DateSlotableInterface, DurationInterface, ComparatorInterface
+class DateSlot implements DateSlotInterface, DurationInterface, ComparatorInterface
 {
     use ContainsTrait;
     use IntersectTrait;

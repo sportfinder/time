@@ -1,3 +1,5 @@
 ###> PHPSTORM ###
 /.idea
 ###< PHPSTORM ###
+
+/vendor/

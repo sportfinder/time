@@ -1,0 +1,28 @@
+{
+    "name": "sportfinder/time",
+    "description": "Time management library to build complex business logic and agenda",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benjamin Ellis",
+            "email": "ellis.benjamin@outlook.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SportFinder\\Time\\Tests\\": "tests/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "SportFinder\\Time\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    }
+}

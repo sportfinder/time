@@ -4,7 +4,7 @@
 namespace SportFinder\Time\DateSlot;
 
 
-use App\Util\Date\DateSlotableInterface;
+use SportFinder\Time\DateSlotableInterface;
 
 trait IntersectTrait
 {
