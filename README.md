@@ -3,13 +3,17 @@
 For several projects, I had to manage time, daily schedule, weekly schedule, and more. 
 I need to be able to describe a weekly schedule and generate concrete timespans from the weekly schedule.
 
-Those class will help:
-* building Weekly schedule
-* Computing mobile phone usage & pricing details
+Those classes will help you:
+* manage events or any object with a starting and ending points in time
+* Compute mobile phone usages & detailed consumption.
+* define if a resource is available or not based on its usages
+* detect availability/free time in a weekly schedule.
+* generate optimized daily/weekly schedules
 
 Project using this package:
 * [SportFinder](https://www.sport-finder.com)
 * [Natagora training platform](http://formations-nature.be/)
+* Inspired by my experience at [BePark](http://www.bepark.eu/)
 
 ## Interfaces & classes
 
