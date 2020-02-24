@@ -13,7 +13,9 @@ Those classes will help you:
 Project using this package:
 * [SportFinder](https://www.sport-finder.com)
 * [Natagora training platform](http://formations-nature.be/)
-* Inspired by my experience at [BePark](http://www.bepark.eu/)
+
+Inspired by
+* My experience at [BePark](http://www.bepark.eu/)
 
 ## Interfaces & classes
 
