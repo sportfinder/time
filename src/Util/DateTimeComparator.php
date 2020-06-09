@@ -80,7 +80,7 @@ class DateTimeComparator
 
         if($orEquals)
         {
-            return $first <= $second;
+            return $first >= $second;
         }
 
         return $first > $second;

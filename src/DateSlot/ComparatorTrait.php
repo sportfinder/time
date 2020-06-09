@@ -25,12 +25,16 @@ trait ComparatorTrait
 
     protected function isBeforeDateTime(\DateTime $datetime = null, $intervalOpen = false)
     {
+        // -----[----]---->
+        // ------------|-->
         return Util::before($this->getEnd(), $datetime, $intervalOpen);
     }
 
     protected function isAfterDateTime(\DateTime $datetime = null, $intervalOpen = false)
     {
-        return Util::after($this->getStart(), $datetime, $intervalOpen);
+        // -----[----]---->
+        // ---|----------->
+        return Util::before($datetime, $this->getStart(), $intervalOpen);
     }
 
     /**

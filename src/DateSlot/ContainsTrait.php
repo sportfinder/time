@@ -15,6 +15,19 @@ trait ContainsTrait
             $this->_containsDateSlot($dateTimeOrDateSlot, $openLeft, $openRight);
     }
 
+    /**
+     *
+     * ----[---THIS---]--->
+     * ---------|---------> => true
+     * ---------------|---> => true
+     * ----|--------------> => true
+     *
+     * ----]---THIS---[--->
+     * ---------|---------> => true
+     * ---------------|---> => false
+     * ----|--------------> => false
+     *
+     */
     protected function _containsDateTime(\DateTime $datetime, $openLeft = false, $openRight = false)
     {
         if($this->getStart() == null and $this->getEnd() != null)
@@ -27,7 +40,7 @@ trait ContainsTrait
             if($openLeft) return $datetime > $this->getStart();
             return $datetime >= $this->getStart();
         }
-        return !($this->isBeforeDateTime($datetime, $openLeft) OR $this->isAfterDateTime($datetime, $openRight));
+        return !($this->isBefore($datetime, $openLeft) OR $this->isAfter($datetime, $openRight));
     }
 
     protected function _containsDateSlot(DateSlotableInterface $dateSlot, $openLeft = false, $openRight = false)

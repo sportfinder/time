@@ -35,9 +35,9 @@ class DateSlotTest extends TestCase
         $dateSlot = new DateSlot(Factory::date("2000-01-01"), Factory::date("2000-01-10"));
         $newDateSlot = $dateSlot->toDateSlot();
         $this->assertInstanceOf(DateSlotInterface::class, $newDateSlot);
-//        $this->assertNotEquals($dateSlot, $newDateSlot);
         $this->assertEquals($dateSlot->getStart(), $newDateSlot->getStart());
         $this->assertEquals($dateSlot->getEnd(), $newDateSlot->getEnd());
+        $this->assertEquals($dateSlot, $newDateSlot);
     }
 
     public function testGetDuration()

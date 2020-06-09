@@ -30,11 +30,10 @@ class DateSlot implements DateSlotInterface, DurationInterface, ComparatorInterf
         $this->setStart($start);
     }
 
-
     public function __toString()
     {
-        return 'DateSlot [' . $this->getStart()->format('l d/m/Y H:i:s') .
-            ' => ' . $this->getEnd()->format('l d/m/Y H:i:s') . ']';
+        return 'DateSlot [' . $this->getStart()->format('d/m/Y H:i:s') .
+            ' => ' . $this->getEnd()->format('d/m/Y H:i:s') . ']';
     }
 
     public function hasTimeLeft(): bool
@@ -47,7 +46,7 @@ class DateSlot implements DateSlotInterface, DurationInterface, ComparatorInterf
         return clone $this;
     }
 
-    public function getDuration($unit = Units::SECOND): int
+    public function getDuration($unit = Units::SECOND): ?int
     {
         if ($this->getStart() == null) return null;
         if ($this->getEnd() == null) return null;

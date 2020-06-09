@@ -14,7 +14,7 @@ interface DateSlotInterface extends DateSlotableInterface
 
     public function subtract($dateSlot);
 
-    public function getDuration($unit = Units::SECOND): int;
+    public function getDuration($unit = Units::SECOND): ?int;
 
     public function hasTimeLeft(): bool;
 

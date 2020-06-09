@@ -20,6 +20,11 @@ class DateTime extends \DateTime implements ComparatorInterface, DateSlotableInt
         return $specializedDateTime;
     }
 
+    public function __toString()
+    {
+        return $this->format('H:i');
+    }
+
 
     public function getStart(): ?\DateTime
     {

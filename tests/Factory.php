@@ -13,6 +13,7 @@ class Factory
     const FORMAT_FULL = "Y-m-d H:i:s";
     const FORMAT_MEDIUM = "Y-m-d H:i";
     const FORMAT_LIGHT = "Y-m-d";
+    const FORMAT_TIME = " H:i";
 
     public static function date($value, $format = self::FORMAT_LIGHT)
     {
@@ -34,9 +35,19 @@ class Factory
         return self::date($value, $format);
     }
 
-    public static function dateslot($from, $to, $format = self::FORMAT_LIGHT)
+    public static function dateslot($from, $to, $format = null)
     {
+        if($format == null)
+        {
+            $format = strlen($from) == 5 ? self::FORMAT_TIME : self::FORMAT_LIGHT;
+        }
         return new DateSlot(self::date($from, $format), self::date($to, $format));
+    }
+
+    public static function time($value)
+    {
+        [$hours, $minutes] = explode(':', $value);
+        return (new DateTime())->setTime($hours, $minutes, 0);
     }
 
 
