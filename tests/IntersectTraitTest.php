@@ -9,7 +9,8 @@ use SportFinder\Time\Tests\Factory;
 class IntersectTraitTest extends TestCase
 {
     /**
-     * @dataProvider getTestdata
+     * @dataProvider getDateTestData
+     * @dataProvider dateTimeTestData
      */
     public function testIntersect($expected, DateSlot $object, DateSlot $parameter)
     {
@@ -19,7 +20,28 @@ class IntersectTraitTest extends TestCase
         $this->assertEquals($expected, $intersect);
     }
 
-    public function getTestdata()
+    public function dateTimeTestData()
+    {
+        return [
+            'time_equals' => [
+                new DateSlot(t('10:00'), t('12:00')),
+                new DateSlot(t('10:00'), t('12:00')),
+                new DateSlot(t('10:00'), t('12:00')),
+            ],
+            'time_partial' => [
+                new DateSlot(t('11:00'), t('12:00')),
+                new DateSlot(t('10:00'), t('12:00')),
+                new DateSlot(t('11:00'), t('12:00')),
+            ],
+            'time_partial2' => [
+                new DateSlot(t('11:00'), t('12:00')),
+                new DateSlot(t('10:00'), t('12:00')),
+                new DateSlot(t('11:00'), t('13:00')),
+            ],
+        ];
+    }
+
+    public function getDateTestData()
     {
         return [
             'equals' => [

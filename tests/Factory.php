@@ -15,6 +15,14 @@ class Factory
     const FORMAT_LIGHT = "Y-m-d";
     const FORMAT_TIME = " H:i";
 
+    public static function createFromTime($time)
+    {
+        [$hour, $minutes] = explode(':', $time);
+
+        return (new \DateTime())
+            ->setTime($hour, $minutes, 0);
+    }
+
     public static function date($value, $format = self::FORMAT_LIGHT)
     {
         $dateTime = DateTime::createFromFormat($format, $value);

@@ -25,9 +25,16 @@ class DateSlot implements DateSlotInterface, DurationInterface, ComparatorInterf
 
     function __construct(\DateTime $start = null, \DateTime $end = null)
     {
-        if ($start !== null and $end !== null and $start > $end) throw new \Exception("start must be before end.");
         $this->setEnd($end);
         $this->setStart($start);
+    }
+
+    private function ensureValidState(): void
+    {
+        if($this->start == null) return;
+        if($this->end == null) return;
+        if ($this->start > $this->end)
+            throw new InvalidStateException("start must be before end.");
     }
 
     public function __toString()
@@ -86,6 +93,7 @@ class DateSlot implements DateSlotInterface, DurationInterface, ComparatorInterf
             return $this;
         }
         $this->end = clone $end;
+        $this->ensureValidState();
 
         return $this;
     }
@@ -102,6 +110,7 @@ class DateSlot implements DateSlotInterface, DurationInterface, ComparatorInterf
             return $this;
         }
         $this->start = clone $start;
+        $this->ensureValidState();
 
         return $this;
     }
