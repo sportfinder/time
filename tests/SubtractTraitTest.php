@@ -8,7 +8,7 @@ use SportFinder\Time\Tests\Factory;
 
 class SubtractTraitTest extends TestCase
 {
-    public function getTestdata()
+    public function getDateTestData()
     {
         return [
             'equals'                   => [
@@ -74,8 +74,20 @@ class SubtractTraitTest extends TestCase
         ];
     }
 
+    public function getTimeTestData()
+    {
+        return [
+            'A contains B'                   => [
+                Factory::dateslot('14:30', '15:00', Factory::FORMAT_TIME),
+                Factory::dateslot('14:30', '15:30', Factory::FORMAT_TIME),
+                [],
+            ],
+        ];
+    }
+
     /**
-     * @dataProvider getTestdata
+     * @dataProvider getDateTestData
+     * @dataProvider getTimeTestData
      */
     public function testSubtract(DateSlot $object, $parameter, $expected)
     {

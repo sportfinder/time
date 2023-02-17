@@ -44,8 +44,8 @@ trait SubtractTrait
         //  -       --|-------|-->
         //  =       ------------->
         if ($this->equals($dateSlot) OR (
-                $dateSlot->getStart() < $this->getStart() AND
-                $dateSlot->getEnd() > $this->getEnd()
+                $dateSlot->getStart() <= $this->getStart() AND
+                $dateSlot->getEnd() >= $this->getEnd()
             )) {
             return [];
         }
